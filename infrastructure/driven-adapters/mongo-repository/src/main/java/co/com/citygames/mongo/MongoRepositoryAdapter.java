@@ -20,7 +20,7 @@ public class MongoRepositoryAdapter implements GameGateway {
     public Flux<Game> getAllGames() {
         return gameDataRepository
                 .findAll()
-                .switchIfEmpty(Flux.error(new RuntimeException("No games found")))
+                .switchIfEmpty(Flux.empty())
                 .map(gameData -> objectMapper.map(gameData, Game.class));
     }
 
