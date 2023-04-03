@@ -25,7 +25,10 @@ public class MongoRepositoryAdapter implements GameGateway {
 
     @Override
     public Mono<Game> getGameById(String gameId) {
-        return null;
+        return gameDataRepository
+                .findById(gameId)
+                .switchIfEmpty(Mono.error(new RuntimeException("Could not find game for id: " + gameId)))
+                .map(gameData -> objectMapper.map(gameData, Game.class));
     }
 
     @Override
