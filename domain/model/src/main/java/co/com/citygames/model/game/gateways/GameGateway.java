@@ -4,7 +4,7 @@ import co.com.citygames.model.game.Game;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface GameRepository {
+public interface GameGateway {
 
     Flux<Game> getAllGames();
     Mono<Game> getGameById();
