@@ -1,4 +1,4 @@
-package co.com.citygames.api;
+package co.com.citygames.api.game;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

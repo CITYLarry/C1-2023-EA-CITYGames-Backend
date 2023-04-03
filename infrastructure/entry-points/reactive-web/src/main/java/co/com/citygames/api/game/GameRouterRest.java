@@ -1,4 +1,4 @@
-package co.com.citygames.api;
+package co.com.citygames.api.game;
 
 import co.com.citygames.model.game.Game;
 import co.com.citygames.usecase.game.deletegame.DeleteGameUseCase;
@@ -21,7 +21,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration
-public class RouterRest {
+public class GameRouterRest {
     @Bean
     public RouterFunction<ServerResponse> getAllGames(GetAllGamesUseCase getAllGamesUseCase) {
         return route(
