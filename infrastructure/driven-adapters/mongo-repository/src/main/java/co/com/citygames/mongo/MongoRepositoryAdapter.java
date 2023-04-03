@@ -41,7 +41,14 @@ public class MongoRepositoryAdapter implements GameGateway {
 
     @Override
     public Mono<Game> updateGame(String gameId, Game game) {
-        return null;
+        return gameDataRepository
+                .findById(gameId)
+                .switchIfEmpty(Mono.error(new RuntimeException("Could not find game for id: " + gameId)))
+                .flatMap(gameData -> {
+                    game.setGameId(gameData.getGameId());
+                    return gameDataRepository.save(objectMapper.map(game, GameData.class));
+                })
+                .map(gameData -> objectMapper.map(gameData, Game.class));
     }
 
     @Override
