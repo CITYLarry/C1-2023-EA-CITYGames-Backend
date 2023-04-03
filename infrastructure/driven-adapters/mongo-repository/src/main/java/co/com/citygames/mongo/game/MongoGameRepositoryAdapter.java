@@ -11,9 +11,9 @@ import reactor.core.publisher.Mono;
 
 @Repository
 @RequiredArgsConstructor
-public class MongoRepositoryAdapter implements GameGateway {
+public class MongoGameRepositoryAdapter implements GameGateway {
 
-    private final MongoDBRepository gameDataRepository;
+    private final MongoGameDBRepository gameDataRepository;
     private final ObjectMapper objectMapper;
 
     @Override

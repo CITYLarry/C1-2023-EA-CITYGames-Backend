@@ -11,9 +11,9 @@ import reactor.core.publisher.Mono;
 
 @Repository
 @RequiredArgsConstructor
-public class MongoRepositoryAdapter implements OrderDetailGateway {
+public class MongoOrderRepositoryAdapter implements OrderDetailGateway {
 
-    private final MongoDBRepository orderDetailDataRepository;
+    private final MongoOrderDBRepository orderDetailDataRepository;
     private final ObjectMapper objectMapper;
 
     @Override
