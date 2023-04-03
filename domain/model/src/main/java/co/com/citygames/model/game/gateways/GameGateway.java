@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 public interface GameGateway {
 
     Flux<Game> getAllGames();
-    Mono<Game> getGameById();
+    Mono<Game> getGameById(String gameId);
     Mono<Game> saveGame(Game game);
     Mono<Game> updateGame(String gameId, Game game);
     Mono<String> deleteGame(String gameId);

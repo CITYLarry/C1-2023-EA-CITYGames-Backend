@@ -10,7 +10,7 @@ public class GetGameByIdUseCase {
 
     private final GameGateway gameGateway;
 
-    public Mono<Game> get() {
-        return gameGateway.getGameById();
+    public Mono<Game> get(String gameId) {
+        return gameGateway.getGameById(gameId);
     }
 }
