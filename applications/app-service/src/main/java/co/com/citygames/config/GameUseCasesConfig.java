@@ -17,12 +17,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "co.com.citygames.usecase")/*,
+@ComponentScan(basePackages = "co.com.citygames.usecase.game")/*,
         includeFilters = {
                 @ComponentScan.Filter(type = FilterType.REGEX, pattern = "^.+UseCase$")
         },
         useDefaultFilters = false)*/
-public class UseCasesConfig {
+public class GameUseCasesConfig {
 
         @Bean
         public GetAllGamesUseCase getAllGamesUseCase(GameGateway gameGateway) {
@@ -62,15 +62,5 @@ public class UseCasesConfig {
         @Bean
         public GetAllPcGamesUseCase getAllPcGamesUseCase(GameGateway gameGateway) {
                 return new GetAllPcGamesUseCase(gameGateway);
-        }
-
-        @Bean
-        public GetAllOrdersUseCase getAllOrdersUseCase(OrderDetailGateway orderDetailGateway) {
-                return new GetAllOrdersUseCase(orderDetailGateway);
-        }
-
-        @Bean
-        public SaveOrderUseCase saveOrderUseCase(OrderDetailGateway orderDetailGateway) {
-                return new SaveOrderUseCase(orderDetailGateway);
         }
 }
