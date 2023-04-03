@@ -10,7 +10,7 @@ public class DeleteGameUseCase {
 
     private final GameGateway gameGateway;
 
-    public Mono<String> delete(String gameId) {
+    public Mono<Void> delete(String gameId) {
         return gameGateway.deleteGame(gameId);
     }
 }

@@ -10,7 +10,7 @@ public interface GameGateway {
     Mono<Game> getGameById(String gameId);
     Mono<Game> saveGame(Game game);
     Mono<Game> updateGame(String gameId, Game game);
-    Mono<String> deleteGame(String gameId);
+    Mono<Void> deleteGame(String gameId);
 
     Flux<Game> getAllSonyGames();
     Flux<Game> getAllMicrosoftGames();
