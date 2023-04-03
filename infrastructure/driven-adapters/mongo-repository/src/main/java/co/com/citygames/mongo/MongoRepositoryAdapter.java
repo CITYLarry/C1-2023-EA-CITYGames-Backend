@@ -17,11 +17,14 @@ public class MongoRepositoryAdapter implements GameGateway {
 
     @Override
     public Flux<Game> getAllGames() {
-        return null;
+        return gameDataRepository
+                .findAll()
+                .switchIfEmpty(Flux.error(new RuntimeException("No games found")))
+                .map(gameData -> objectMapper.map(gameData, Game.class));
     }
 
     @Override
-    public Mono<Game> getGameById() {
+    public Mono<Game> getGameById(String gameId) {
         return null;
     }
 
