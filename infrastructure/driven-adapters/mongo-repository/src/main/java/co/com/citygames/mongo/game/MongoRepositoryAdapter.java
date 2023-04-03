@@ -1,8 +1,8 @@
-package co.com.citygames.mongo;
+package co.com.citygames.mongo.game;
 
 import co.com.citygames.model.game.Game;
 import co.com.citygames.model.game.gateways.GameGateway;
-import co.com.citygames.mongo.data.GameData;
+import co.com.citygames.mongo.game.data.GameData;
 import lombok.RequiredArgsConstructor;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;

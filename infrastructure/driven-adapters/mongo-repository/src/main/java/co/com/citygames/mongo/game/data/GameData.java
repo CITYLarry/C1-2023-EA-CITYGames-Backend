@@ -1,4 +1,4 @@
-package co.com.citygames.mongo.data;
+package co.com.citygames.mongo.game.data;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

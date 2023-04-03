@@ -1,11 +1,11 @@
 package co.com.citygames.api;
 
 import co.com.citygames.model.game.Game;
-import co.com.citygames.usecase.deletegame.DeleteGameUseCase;
-import co.com.citygames.usecase.getallgames.GetAllGamesUseCase;
-import co.com.citygames.usecase.getgamebyid.GetGameByIdUseCase;
-import co.com.citygames.usecase.savegame.SaveGameUseCase;
-import co.com.citygames.usecase.updategame.UpdateGameUseCase;
+import co.com.citygames.usecase.game.deletegame.DeleteGameUseCase;
+import co.com.citygames.usecase.game.getallgames.GetAllGamesUseCase;
+import co.com.citygames.usecase.game.getgamebyid.GetGameByIdUseCase;
+import co.com.citygames.usecase.game.savegame.SaveGameUseCase;
+import co.com.citygames.usecase.game.updategame.UpdateGameUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
