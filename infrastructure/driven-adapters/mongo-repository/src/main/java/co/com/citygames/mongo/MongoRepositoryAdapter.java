@@ -1,20 +1,57 @@
 package co.com.citygames.mongo;
 
-import co.com.citygames.mongo.helper.AdapterOperations;
+import co.com.citygames.model.game.Game;
+import co.com.citygames.model.game.gateways.GameGateway;
+import lombok.RequiredArgsConstructor;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Repository
-public class MongoRepositoryAdapter extends AdapterOperations<Object/* change for domain model */, Object/* change for adapter model */, String, MongoDBRepository>
-// implements ModelRepository from domain
-{
+@RequiredArgsConstructor
+public class MongoRepositoryAdapter implements GameGateway {
 
-    public MongoRepositoryAdapter(MongoDBRepository repository, ObjectMapper mapper) {
-        /**
-         *  Could be use mapper.mapBuilder if your domain model implement builder pattern
-         *  super(repository, mapper, d -> mapper.mapBuilder(d,ObjectModel.ObjectModelBuilder.class).build());
-         *  Or using mapper.map with the class of the object model
-         */
-        super(repository, mapper, d -> mapper.map(d, Object.class/* change for domain model */));
+    private final MongoDBRepository gameDataRepository;
+    private final ObjectMapper objectMapper;
+
+    @Override
+    public Flux<Game> getAllGames() {
+        return null;
+    }
+
+    @Override
+    public Mono<Game> getGameById() {
+        return null;
+    }
+
+    @Override
+    public Mono<Game> saveGame(Game game) {
+        return null;
+    }
+
+    @Override
+    public Mono<Game> updateGame(String gameId, Game game) {
+        return null;
+    }
+
+    @Override
+    public Mono<String> deleteGame(String gameId) {
+        return null;
+    }
+
+    @Override
+    public Flux<Game> getAllSonyGames() {
+        return null;
+    }
+
+    @Override
+    public Flux<Game> getAllMicrosoftGames() {
+        return null;
+    }
+
+    @Override
+    public Flux<Game> getAllPcGames() {
+        return null;
     }
 }
