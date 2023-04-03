@@ -5,12 +5,14 @@ import co.com.citygames.model.game.gateways.GameGateway;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
+import java.util.function.Function;
+
 @RequiredArgsConstructor
-public class SaveGameUseCase {
+public class SaveGameUseCase implements Function<Game, Mono<Game>> {
 
     private final GameGateway gameGateway;
 
-    public Mono<Game> save(Game game) {
+    public Mono<Game> apply(Game game) {
         return gameGateway.saveGame(game);
     }
 }
