@@ -1,6 +1,7 @@
 package co.com.citygames.api;
 
 import co.com.citygames.model.game.Game;
+import co.com.citygames.usecase.deletegame.DeleteGameUseCase;
 import co.com.citygames.usecase.getallgames.GetAllGamesUseCase;
 import co.com.citygames.usecase.getgamebyid.GetGameByIdUseCase;
 import co.com.citygames.usecase.savegame.SaveGameUseCase;
@@ -76,13 +77,14 @@ public class RouterRest {
     }
 
     @Bean
-    public RouterFunction<ServerResponse> deleteGame(GetGameByIdUseCase getGameByIdUseCase) {
+    public RouterFunction<ServerResponse> deleteGame(DeleteGameUseCase deleteGameUseCase) {
         return route(
                 GET("/api/v1/games/{gameId}"),
-                request -> getGameByIdUseCase.apply(request.pathVariable("gameId"))
-                        .flatMap(game -> ServerResponse.ok()
+                request -> deleteGameUseCase.apply(request.pathVariable("gameId"))
+                        .thenReturn(ServerResponse.ok()
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .bodyValue(game))
+                                .bodyValue("Deleted game with id: " + request.pathVariable("gameId")))
+                        .flatMap(responseMono -> responseMono)
                         .onErrorResume(throwable -> ServerResponse.badRequest()
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .bodyValue(throwable.getMessage()))
