@@ -1,16 +1,17 @@
 package co.com.citygames.usecase.deletegame;
 
-import co.com.citygames.model.game.Game;
 import co.com.citygames.model.game.gateways.GameGateway;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
+import java.util.function.Function;
+
 @RequiredArgsConstructor
-public class DeleteGameUseCase {
+public class DeleteGameUseCase implements Function<String, Mono<Void>> {
 
     private final GameGateway gameGateway;
 
-    public Mono<Void> delete(String gameId) {
+    public Mono<Void> apply(String gameId) {
         return gameGateway.deleteGame(gameId);
     }
 }
