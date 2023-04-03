@@ -52,8 +52,11 @@ public class MongoRepositoryAdapter implements GameGateway {
     }
 
     @Override
-    public Mono<String> deleteGame(String gameId) {
-        return null;
+    public Mono<Void> deleteGame(String gameId) {
+        return gameDataRepository
+                .findById(gameId)
+                .switchIfEmpty(Mono.error(new RuntimeException("Could not find game for id: " + gameId)))
+                .flatMap(gameData -> gameDataRepository.deleteById(gameData.getGameId()));
     }
 
     @Override
