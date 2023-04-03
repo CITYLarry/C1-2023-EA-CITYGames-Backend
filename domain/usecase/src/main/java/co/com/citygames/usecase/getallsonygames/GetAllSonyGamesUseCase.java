@@ -5,8 +5,10 @@ import co.com.citygames.model.game.gateways.GameGateway;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 
+import java.util.function.Supplier;
+
 @RequiredArgsConstructor
-public class GetAllSonyGamesUseCase {
+public class GetAllSonyGamesUseCase implements Supplier<Flux<Game>> {
 
     private final GameGateway gameGateway;
 
