@@ -8,8 +8,9 @@ public interface GameGateway {
 
     Flux<Game> getAllGames();
     Mono<Game> getGameById();
-    Mono<Game> saveGame();
-    Mono<String> deleteGame();
+    Mono<Game> saveGame(Game game);
+    Mono<Game> updateGame(String gameId, Game game);
+    Mono<String> deleteGame(String gameId);
 
     Flux<Game> getAllSonyGames();
     Flux<Game> getAllMicrosoftGames();
