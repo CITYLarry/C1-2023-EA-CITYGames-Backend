@@ -13,6 +13,7 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
+import static org.springframework.web.reactive.function.server.RequestPredicates.DELETE;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
 import static org.springframework.web.reactive.function.server.RequestPredicates.PUT;
@@ -67,7 +68,7 @@ public class RouterRest {
                 PUT("/api/v1/games/{gameId}").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(Game.class)
                         .flatMap(game -> updateGameUseCase.apply(request.pathVariable("gameId"), game)
-                                .flatMap(result -> ServerResponse.status(201)
+                                .flatMap(result -> ServerResponse.ok()
                                         .contentType(MediaType.APPLICATION_JSON)
                                         .bodyValue(result))
                                 .onErrorResume(throwable -> ServerResponse.badRequest()
@@ -79,7 +80,7 @@ public class RouterRest {
     @Bean
     public RouterFunction<ServerResponse> deleteGame(DeleteGameUseCase deleteGameUseCase) {
         return route(
-                GET("/api/v1/games/{gameId}"),
+                DELETE("/api/v1/games/{gameId}"),
                 request -> deleteGameUseCase.apply(request.pathVariable("gameId"))
                         .thenReturn(ServerResponse.ok()
                                 .contentType(MediaType.APPLICATION_JSON)
