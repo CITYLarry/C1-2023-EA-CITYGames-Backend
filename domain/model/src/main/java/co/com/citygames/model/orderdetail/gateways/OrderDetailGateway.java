@@ -1,4 +1,4 @@
 package co.com.citygames.model.orderdetail.gateways;
 
-public interface OrderDetailRepository {
+public interface OrderDetailGateway {
 }
