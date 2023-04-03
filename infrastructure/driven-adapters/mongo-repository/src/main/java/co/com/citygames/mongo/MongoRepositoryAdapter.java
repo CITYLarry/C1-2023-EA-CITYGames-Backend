@@ -2,6 +2,7 @@ package co.com.citygames.mongo;
 
 import co.com.citygames.model.game.Game;
 import co.com.citygames.model.game.gateways.GameGateway;
+import co.com.citygames.mongo.data.GameData;
 import lombok.RequiredArgsConstructor;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
@@ -33,7 +34,9 @@ public class MongoRepositoryAdapter implements GameGateway {
 
     @Override
     public Mono<Game> saveGame(Game game) {
-        return null;
+        return gameDataRepository
+                .save(objectMapper.map(game, GameData.class))
+                .map(gameData -> objectMapper.map(gameData, Game.class));
     }
 
     @Override
