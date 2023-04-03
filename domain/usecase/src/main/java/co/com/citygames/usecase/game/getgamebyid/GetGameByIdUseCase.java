@@ -1,4 +1,4 @@
-package co.com.citygames.usecase.savegame;
+package co.com.citygames.usecase.game.getgamebyid;
 
 import co.com.citygames.model.game.Game;
 import co.com.citygames.model.game.gateways.GameGateway;
@@ -8,11 +8,11 @@ import reactor.core.publisher.Mono;
 import java.util.function.Function;
 
 @RequiredArgsConstructor
-public class SaveGameUseCase implements Function<Game, Mono<Game>> {
+public class GetGameByIdUseCase implements Function<String, Mono<Game>> {
 
     private final GameGateway gameGateway;
 
-    public Mono<Game> apply(Game game) {
-        return gameGateway.saveGame(game);
+    public Mono<Game> apply(String gameId) {
+        return gameGateway.getGameById(gameId);
     }
 }

@@ -1,4 +1,4 @@
-package co.com.citygames.usecase.getallsonygames;
+package co.com.citygames.usecase.game.getallsonygames;
 
 import co.com.citygames.model.game.Game;
 import co.com.citygames.model.game.gateways.GameGateway;

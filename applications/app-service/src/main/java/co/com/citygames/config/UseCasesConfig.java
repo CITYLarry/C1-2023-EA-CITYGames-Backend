@@ -1,18 +1,17 @@
 package co.com.citygames.config;
 
 import co.com.citygames.model.game.gateways.GameGateway;
-import co.com.citygames.usecase.deletegame.DeleteGameUseCase;
-import co.com.citygames.usecase.getallgames.GetAllGamesUseCase;
-import co.com.citygames.usecase.getallmicrosoftgames.GetAllMicrosoftGamesUseCase;
-import co.com.citygames.usecase.getallpcgames.GetAllPcGamesUseCase;
-import co.com.citygames.usecase.getallsonygames.GetAllSonyGamesUseCase;
-import co.com.citygames.usecase.getgamebyid.GetGameByIdUseCase;
-import co.com.citygames.usecase.savegame.SaveGameUseCase;
-import co.com.citygames.usecase.updategame.UpdateGameUseCase;
+import co.com.citygames.usecase.game.deletegame.DeleteGameUseCase;
+import co.com.citygames.usecase.game.getallgames.GetAllGamesUseCase;
+import co.com.citygames.usecase.game.getallmicrosoftgames.GetAllMicrosoftGamesUseCase;
+import co.com.citygames.usecase.game.getallpcgames.GetAllPcGamesUseCase;
+import co.com.citygames.usecase.game.getallsonygames.GetAllSonyGamesUseCase;
+import co.com.citygames.usecase.game.getgamebyid.GetGameByIdUseCase;
+import co.com.citygames.usecase.game.savegame.SaveGameUseCase;
+import co.com.citygames.usecase.game.updategame.UpdateGameUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
 
 @Configuration
 @ComponentScan(basePackages = "co.com.citygames.usecase")/*,

@@ -1,4 +1,4 @@
-package co.com.citygames.usecase.getallgames;
+package co.com.citygames.usecase.game.getallmicrosoftgames;
 
 import co.com.citygames.model.game.Game;
 import co.com.citygames.model.game.gateways.GameGateway;
@@ -8,10 +8,11 @@ import reactor.core.publisher.Flux;
 import java.util.function.Supplier;
 
 @RequiredArgsConstructor
-public class GetAllGamesUseCase implements Supplier<Flux<Game>> {
+public class GetAllMicrosoftGamesUseCase implements Supplier<Flux<Game>> {
+
     private final GameGateway gameGateway;
 
     public Flux<Game> get() {
-        return gameGateway.getAllGames();
+        return gameGateway.getAllMicrosoftGames();
     }
 }

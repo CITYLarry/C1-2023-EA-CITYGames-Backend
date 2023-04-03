@@ -1,4 +1,4 @@
-package co.com.citygames.usecase.deletegame;
+package co.com.citygames.usecase.game.deletegame;
 
 import co.com.citygames.model.game.gateways.GameGateway;
 import lombok.RequiredArgsConstructor;

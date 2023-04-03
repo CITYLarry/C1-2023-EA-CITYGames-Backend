@@ -1,4 +1,4 @@
-package co.com.citygames.usecase.getallpcgames;
+package co.com.citygames.usecase.game.getallpcgames;
 
 import co.com.citygames.model.game.Game;
 import co.com.citygames.model.game.gateways.GameGateway;
