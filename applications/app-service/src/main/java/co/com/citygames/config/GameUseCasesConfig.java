@@ -1,7 +1,6 @@
 package co.com.citygames.config;
 
 import co.com.citygames.model.game.gateways.GameGateway;
-import co.com.citygames.model.orderdetail.gateways.OrderDetailGateway;
 import co.com.citygames.usecase.game.deletegame.DeleteGameUseCase;
 import co.com.citygames.usecase.game.getallgames.GetAllGamesUseCase;
 import co.com.citygames.usecase.game.getallmicrosoftgames.GetAllMicrosoftGamesUseCase;
@@ -10,8 +9,6 @@ import co.com.citygames.usecase.game.getallsonygames.GetAllSonyGamesUseCase;
 import co.com.citygames.usecase.game.getgamebyid.GetGameByIdUseCase;
 import co.com.citygames.usecase.game.savegame.SaveGameUseCase;
 import co.com.citygames.usecase.game.updategame.UpdateGameUseCase;
-import co.com.citygames.usecase.orderdetail.getallorders.GetAllOrdersUseCase;
-import co.com.citygames.usecase.orderdetail.saveorder.SaveOrderUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

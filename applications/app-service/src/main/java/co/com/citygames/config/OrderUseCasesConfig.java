@@ -1,10 +1,6 @@
 package co.com.citygames.config;
 
-import co.com.citygames.model.game.gateways.GameGateway;
 import co.com.citygames.model.orderdetail.gateways.OrderDetailGateway;
-import co.com.citygames.usecase.game.deletegame.DeleteGameUseCase;
-import co.com.citygames.usecase.game.getgamebyid.GetGameByIdUseCase;
-import co.com.citygames.usecase.game.updategame.UpdateGameUseCase;
 import co.com.citygames.usecase.orderdetail.deleteorder.DeleteOrderUseCase;
 import co.com.citygames.usecase.orderdetail.getallorders.GetAllOrdersUseCase;
 import co.com.citygames.usecase.orderdetail.getorderbyid.GetOrderByIdUseCase;
@@ -16,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = "co.com.citygames.usecase.orderdetail")
-public class OrderUseCaseConfig {
+public class OrderUseCasesConfig {
 
     @Bean
     public GetAllOrdersUseCase getAllOrdersUseCase(OrderDetailGateway orderDetailGateway) {
