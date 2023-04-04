@@ -6,9 +6,18 @@ import co.com.citygames.usecase.game.getallgames.GetAllGamesUseCase;
 import co.com.citygames.usecase.game.getgamebyid.GetGameByIdUseCase;
 import co.com.citygames.usecase.game.savegame.SaveGameUseCase;
 import co.com.citygames.usecase.game.updategame.UpdateGameUseCase;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.springdoc.core.annotations.RouterOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -22,7 +31,31 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 
 @Configuration
 public class GameRouterRest {
+
     @Bean
+    @RouterOperation(
+            path = "/api/v1/games",
+            produces = { MediaType.APPLICATION_JSON_VALUE },
+            beanClass = GetAllGamesUseCase.class,
+            beanMethod = "get",
+            method = RequestMethod.GET,
+            operation = @Operation(
+                    operationId = "getAllGames",
+                    tags = "Game use cases",
+                    responses = {
+                        @ApiResponse(
+                                responseCode = "200",
+                                description = "Games returned successfully",
+                                content = @Content(schema = @Schema(implementation = Game.class))
+                        ),
+                        @ApiResponse(
+                                responseCode = "204",
+                                description = "Nothing to show",
+                                content = @Content()
+                        )
+                    }
+            )
+    )
     public RouterFunction<ServerResponse> getAllGames(GetAllGamesUseCase getAllGamesUseCase) {
         return route(
                 GET("/api/v1/games"),
@@ -34,6 +67,37 @@ public class GameRouterRest {
     }
 
     @Bean
+    @RouterOperation(
+            path = "/api/v1/games/{gameId}",
+            produces = { MediaType.APPLICATION_JSON_VALUE },
+            beanClass = GetGameByIdUseCase.class,
+            beanMethod = "apply",
+            method = RequestMethod.GET,
+            operation = @Operation(
+                    operationId = "getGameById",
+                    tags = "Game use cases",
+                    parameters = {
+                            @Parameter(
+                                    name = "gameId",
+                                    description = "Game ID",
+                                    required = true,
+                                    in = ParameterIn.PATH
+                            )
+                    },
+                    responses = {
+                            @ApiResponse(
+                                    responseCode = "200",
+                                    description = "Game found successfully",
+                                    content = @Content(schema = @Schema(implementation = Game.class))
+                            ),
+                            @ApiResponse(
+                                    responseCode = "400",
+                                    description = "Could not find game for id:",
+                                    content = @Content()
+                            )
+                    }
+            )
+    )
     public RouterFunction<ServerResponse> getGameById(GetGameByIdUseCase getGameByIdUseCase) {
         return route(
                 GET("/api/v1/games/{gameId}"),
@@ -48,6 +112,34 @@ public class GameRouterRest {
     }
 
     @Bean
+    @RouterOperation(
+            path = "/api/v1/games",
+            produces = { MediaType.APPLICATION_JSON_VALUE },
+            beanClass = SaveGameUseCase.class,
+            beanMethod = "apply",
+            method = RequestMethod.POST,
+            operation = @Operation(
+                    operationId = "saveGame",
+                    tags = "Game use cases",
+                    requestBody = @RequestBody(
+                            required = true,
+                            description = "Game object to be saved",
+                            content = @Content(schema = @Schema(implementation = Game.class))
+                    ),
+                    responses = {
+                            @ApiResponse(
+                                    responseCode = "200",
+                                    description = "Game saved successfully",
+                                    content = @Content(schema = @Schema(implementation = Game.class))
+                            ),
+                            @ApiResponse(
+                                    responseCode = "400",
+                                    description = "Invalid input data",
+                                    content = @Content()
+                            )
+                    }
+            )
+    )
     public RouterFunction<ServerResponse> saveGame(SaveGameUseCase saveGameUseCase) {
         return route(
                 POST("/api/v1/games").and(accept(MediaType.APPLICATION_JSON)),
@@ -63,6 +155,43 @@ public class GameRouterRest {
     }
 
     @Bean
+    @RouterOperation(
+            path = "/api/v1/games/{gameId}",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            beanClass = UpdateGameUseCase.class,
+            beanMethod = "apply",
+            method = RequestMethod.PUT,
+            operation = @Operation(
+                    operationId = "updateGame",
+                    tags = "Game use cases",
+                    description = "Updates the game with the given ID",
+                    parameters = {
+                            @Parameter(
+                                    name = "gameId",
+                                    description = "Game ID",
+                                    required = true,
+                                    in = ParameterIn.PATH
+                            )
+                    },
+                    requestBody = @RequestBody(
+                            description = "Game object to be updated",
+                            required = true,
+                            content = @Content(schema = @Schema(implementation = Game.class))
+                    ),
+                    responses = {
+                            @ApiResponse(
+                                    responseCode = "200",
+                                    description = "Game updated successfully",
+                                    content = @Content(schema = @Schema(implementation = Game.class))
+                            ),
+                            @ApiResponse(
+                                    responseCode = "400",
+                                    description = "Could not find game for id:",
+                                    content = @Content()
+                            )
+                    }
+            )
+    )
     public RouterFunction<ServerResponse> updateGame(UpdateGameUseCase updateGameUseCase) {
         return route(
                 PUT("/api/v1/games/{gameId}").and(accept(MediaType.APPLICATION_JSON)),
@@ -78,6 +207,36 @@ public class GameRouterRest {
     }
 
     @Bean
+    @RouterOperation(
+            path = "/api/v1/games/{gameId}",
+            beanClass = DeleteGameUseCase.class,
+            beanMethod = "apply",
+            method = RequestMethod.DELETE,
+            operation = @Operation(
+                    operationId = "deleteGame",
+                    tags = "Game use cases",
+                    parameters = {
+                            @Parameter(
+                                    name = "gameId",
+                                    description = "Game ID",
+                                    required = true,
+                                    in = ParameterIn.PATH
+                            )
+                    },
+                    responses = {
+                            @ApiResponse(
+                                    responseCode = "200",
+                                    description = "Game deleted successfully",
+                                    content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)
+                            ),
+                            @ApiResponse(
+                                    responseCode = "400",
+                                    description = "Could not find game for id:",
+                                    content = @Content()
+                            )
+                    }
+            )
+    )
     public RouterFunction<ServerResponse> deleteGame(DeleteGameUseCase deleteGameUseCase) {
         return route(
                 DELETE("/api/v1/games/{gameId}"),
