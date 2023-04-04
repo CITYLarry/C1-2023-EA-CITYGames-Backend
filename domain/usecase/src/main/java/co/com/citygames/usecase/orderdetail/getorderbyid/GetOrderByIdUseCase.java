@@ -8,7 +8,6 @@ import reactor.core.publisher.Mono;
 import java.util.function.Function;
 
 @RequiredArgsConstructor
-
 public class GetOrderByIdUseCase implements Function<String, Mono<OrderDetail>> {
 
     private final OrderDetailGateway orderDetailGateway;
