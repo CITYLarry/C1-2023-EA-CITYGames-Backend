@@ -1,6 +1,5 @@
 package co.com.citygames.usecase.orderdetail.deleteorder;
 
-import co.com.citygames.model.orderdetail.OrderDetail;
 import co.com.citygames.model.orderdetail.gateways.OrderDetailGateway;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
