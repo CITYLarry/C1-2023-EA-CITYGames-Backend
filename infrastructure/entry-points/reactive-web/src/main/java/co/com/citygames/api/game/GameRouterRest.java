@@ -9,6 +9,7 @@ import co.com.citygames.usecase.game.updategame.UpdateGameUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -35,7 +36,7 @@ public class GameRouterRest {
     @Bean
     @RouterOperation(
             path = "/api/v1/games",
-            produces = { MediaType.APPLICATION_JSON_VALUE },
+            produces = MediaType.APPLICATION_JSON_VALUE,
             beanClass = GetAllGamesUseCase.class,
             beanMethod = "get",
             method = RequestMethod.GET,
@@ -46,7 +47,7 @@ public class GameRouterRest {
                         @ApiResponse(
                                 responseCode = "200",
                                 description = "Games returned successfully",
-                                content = @Content(schema = @Schema(implementation = Game.class))
+                                content = @Content(array = @ArraySchema(schema = @Schema(implementation = Game.class)))
                         ),
                         @ApiResponse(
                                 responseCode = "204",
@@ -69,7 +70,7 @@ public class GameRouterRest {
     @Bean
     @RouterOperation(
             path = "/api/v1/games/{gameId}",
-            produces = { MediaType.APPLICATION_JSON_VALUE },
+            produces = MediaType.APPLICATION_JSON_VALUE,
             beanClass = GetGameByIdUseCase.class,
             beanMethod = "apply",
             method = RequestMethod.GET,
@@ -114,7 +115,7 @@ public class GameRouterRest {
     @Bean
     @RouterOperation(
             path = "/api/v1/games",
-            produces = { MediaType.APPLICATION_JSON_VALUE },
+            produces = MediaType.APPLICATION_JSON_VALUE,
             beanClass = SaveGameUseCase.class,
             beanMethod = "apply",
             method = RequestMethod.POST,
@@ -128,7 +129,7 @@ public class GameRouterRest {
                     ),
                     responses = {
                             @ApiResponse(
-                                    responseCode = "200",
+                                    responseCode = "201",
                                     description = "Game saved successfully",
                                     content = @Content(schema = @Schema(implementation = Game.class))
                             ),
@@ -209,6 +210,7 @@ public class GameRouterRest {
     @Bean
     @RouterOperation(
             path = "/api/v1/games/{gameId}",
+            produces = MediaType.APPLICATION_JSON_VALUE,
             beanClass = DeleteGameUseCase.class,
             beanMethod = "apply",
             method = RequestMethod.DELETE,
