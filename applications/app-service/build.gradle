@@ -8,6 +8,7 @@ dependencies {
     implementation project(':usecase')
     implementation 'org.springframework.boot:spring-boot-starter'
     runtimeOnly('org.springframework.boot:spring-boot-devtools')
+    implementation 'org.springdoc:springdoc-openapi-starter-webflux-ui:2.0.4'
 }
 
 tasks.register('explodedJar', Copy) {
@@ -23,4 +24,8 @@ jar {
 bootJar {
     // Sets output jar name
     archiveFileName = "${project.getParent().getName()}.${archiveExtension.get()}"
+}
+
+repositories {
+    mavenCentral()
 }
