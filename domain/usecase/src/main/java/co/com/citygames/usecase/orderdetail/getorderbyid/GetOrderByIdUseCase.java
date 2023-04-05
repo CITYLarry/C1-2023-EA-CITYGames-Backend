@@ -12,7 +12,7 @@ public class GetOrderByIdUseCase implements Function<String, Mono<OrderDetail>> 
 
     private final OrderDetailGateway orderDetailGateway;
 
-    public Mono<OrderDetail> apply(String oderId) {
-        return orderDetailGateway.getOrderById(oderId);
+    public Mono<OrderDetail> apply(String orderId) {
+        return orderDetailGateway.getOrderById(orderId);
     }
 }
