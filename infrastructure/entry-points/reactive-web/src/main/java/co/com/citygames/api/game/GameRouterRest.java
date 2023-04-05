@@ -51,7 +51,7 @@ public class GameRouterRest {
                         ),
                         @ApiResponse(
                                 responseCode = "204",
-                                description = "Nothing to show",
+                                description = "No games found",
                                 content = @Content()
                         )
                     }
