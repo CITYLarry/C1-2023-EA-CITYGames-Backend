@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  citygames:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    environment:
+      SPRING_DATA_MONGODB_DATABASE: citygames
+      SPRING_DATA_MONGODB_URI: mongodb+srv://user_admin:Gc5PmFZ5PabWMZEf@cluster0.yrntkij.mongodb.net/citygames?retryWrites=true&w=majority
+    links:
+      - mongodb
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
