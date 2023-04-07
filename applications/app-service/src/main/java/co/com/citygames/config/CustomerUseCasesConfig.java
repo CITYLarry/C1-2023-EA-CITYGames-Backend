@@ -3,6 +3,7 @@ package co.com.citygames.config;
 import co.com.citygames.model.customer.gateways.CustomerGateway;
 import co.com.citygames.usecase.customer.deletecustomer.DeleteCustomerUseCase;
 import co.com.citygames.usecase.customer.getallcustomers.GetAllCustomersUseCase;
+import co.com.citygames.usecase.customer.getcustomerbyemail.GetCustomerByEmailUseCase;
 import co.com.citygames.usecase.customer.getcustomerbyid.GetCustomerByIdUseCase;
 import co.com.citygames.usecase.customer.savecustomer.SaveCustomerUseCase;
 import co.com.citygames.usecase.customer.updatecustomer.UpdateCustomerUseCase;
@@ -37,5 +38,10 @@ public class CustomerUseCasesConfig {
     @Bean
     public DeleteCustomerUseCase deleteCustomerUseCase(CustomerGateway customerGateway) {
         return new DeleteCustomerUseCase(customerGateway);
+    }
+
+    @Bean
+    public GetCustomerByEmailUseCase getCustomerByEmailUseCase(CustomerGateway customerGateway) {
+        return new GetCustomerByEmailUseCase(customerGateway);
     }
 }

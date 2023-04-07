@@ -60,4 +60,14 @@ public class MongoCustomerRepositoryAdapter implements CustomerGateway {
                 .switchIfEmpty(Mono.error(new RuntimeException("Could not find customer for id: " + customerId)))
                 .flatMap(customerData -> customerRepository.deleteById(customerData.getCustomerId()));
     }
+
+
+
+    @Override
+    public Mono<Customer> getCustomerByEmail(String email) {
+        return customerRepository
+                .findCustomerDataByEmail(email)
+                .switchIfEmpty(Mono.error(new RuntimeException("Could not find customer for email: " + email)))
+                .map(customerData -> objectMapper.map(customerData, Customer.class));
+    }
 }

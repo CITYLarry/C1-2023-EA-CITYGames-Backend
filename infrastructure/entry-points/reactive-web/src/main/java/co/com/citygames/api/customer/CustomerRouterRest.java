@@ -3,6 +3,7 @@ package co.com.citygames.api.customer;
 import co.com.citygames.model.customer.Customer;
 import co.com.citygames.usecase.customer.deletecustomer.DeleteCustomerUseCase;
 import co.com.citygames.usecase.customer.getallcustomers.GetAllCustomersUseCase;
+import co.com.citygames.usecase.customer.getcustomerbyemail.GetCustomerByEmailUseCase;
 import co.com.citygames.usecase.customer.getcustomerbyid.GetCustomerByIdUseCase;
 import co.com.citygames.usecase.customer.savecustomer.SaveCustomerUseCase;
 import co.com.citygames.usecase.customer.updatecustomer.UpdateCustomerUseCase;
@@ -103,6 +104,51 @@ public class CustomerRouterRest {
         return route(
                 GET("/api/v1/customers/{customerId}"),
                 request -> getCustomerByIdUseCase.apply(request.pathVariable("customerId"))
+                        .flatMap(customer -> ServerResponse.ok()
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .bodyValue(customer))
+                        .onErrorResume(throwable -> ServerResponse.badRequest()
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .bodyValue(throwable.getMessage()))
+        );
+    }
+
+    @Bean
+    @RouterOperation(
+            path = "/api/v1/customers/email/{email}",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            beanClass = GetCustomerByEmailUseCase.class,
+            beanMethod = "apply",
+            method = RequestMethod.GET,
+            operation = @Operation(
+                    operationId = "getCustomerByEmail",
+                    tags = "Customer use cases",
+                    parameters = {
+                            @Parameter(
+                                    name = "email",
+                                    description = "Customer email address",
+                                    required = true,
+                                    in = ParameterIn.PATH
+                            )
+                    },
+                    responses = {
+                            @ApiResponse(
+                                    responseCode = "200",
+                                    description = "Customer found successfully",
+                                    content = @Content(schema = @Schema(implementation = Customer.class))
+                            ),
+                            @ApiResponse(
+                                    responseCode = "400",
+                                    description = "Could not find customer for email:",
+                                    content = @Content()
+                            )
+                    }
+            )
+    )
+    public RouterFunction<ServerResponse> getCustomerByEmail(GetCustomerByEmailUseCase getCustomerByEmailUseCase) {
+        return route(
+                GET("/api/v1/customers/email/{email}"),
+                request -> getCustomerByEmailUseCase.apply(request.pathVariable("email"))
                         .flatMap(customer -> ServerResponse.ok()
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .bodyValue(customer))

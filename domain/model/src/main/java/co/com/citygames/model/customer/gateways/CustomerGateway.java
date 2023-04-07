@@ -11,4 +11,6 @@ public interface CustomerGateway {
     Mono<Customer> saveCustomer(Customer customer);
     Mono<Customer> updateCustomer(String customerId, Customer customer);
     Mono<Void> deleteCustomer(String customerId);
+
+    Mono<Customer> getCustomerByEmail(String email);
 }
