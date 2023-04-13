@@ -32,7 +32,7 @@ class GetGameByIdUseCaseTest {
     void apply() {
 
         var gameId = "testId";
-        var game = new Game(gameId, "title", "1995", "edition", 1, true, List.of());
+        var game = new Game("testId", "title", "testPrice","edition","testCover", 1, true);
 
         Mockito.when(gateway.getGameById(gameId)).thenReturn(Mono.just(game));
 

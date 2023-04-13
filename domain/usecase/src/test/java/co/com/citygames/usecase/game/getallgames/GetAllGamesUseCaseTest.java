@@ -31,8 +31,8 @@ class GetAllGamesUseCaseTest {
     @DisplayName("Get all games successfully")
     void get() {
 
-        var g1 = new Game("testId", "title", "1995", "edition", 1, true, List.of());
-        var g2 = new Game("testId2", "title2", "1996", "edition2", 2, true, List.of());
+        var g1 = new Game("testId", "title", "testPrice","edition","testCover", 1, true );
+        var g2 = new Game("testId2", "title2","testPrice2", "edition2", "testCover2", 0,true);
 
         Mockito.when(gateway.getAllGames()).thenReturn(Flux.just(g1, g2));
 

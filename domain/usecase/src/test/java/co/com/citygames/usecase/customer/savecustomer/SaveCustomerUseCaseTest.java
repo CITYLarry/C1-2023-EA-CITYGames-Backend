@@ -30,8 +30,8 @@ class SaveCustomerUseCaseTest {
     @Test
     @DisplayName("Save customer successfully")
     void save() {
-        var customerToSave = new Customer("testId", "test@mail.com", "testPassword", List.of());
-        var savedCustomer = new Customer("testId", "test@mail.com", "testPassword", List.of());
+        var customerToSave = new Customer("testId", "test@mail.com", List.of());
+        var savedCustomer = new Customer("testId", "test@mail.com", List.of());
 
         Mockito.when(gateway.saveCustomer(customerToSave)).thenReturn(Mono.just(savedCustomer));
 

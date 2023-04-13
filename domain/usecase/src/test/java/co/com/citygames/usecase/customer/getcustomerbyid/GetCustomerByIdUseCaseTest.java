@@ -32,7 +32,7 @@ class GetCustomerByIdUseCaseTest {
     void getById() {
 
         var customerId = "testId";
-        var customer = new Customer(customerId, "test@mail.com", "testPassword", List.of());
+        var customer = new Customer(customerId, "test@mail.com", List.of());
 
         Mockito.when(gateway.getCustomerById(customerId)).thenReturn(Mono.just(customer));
 

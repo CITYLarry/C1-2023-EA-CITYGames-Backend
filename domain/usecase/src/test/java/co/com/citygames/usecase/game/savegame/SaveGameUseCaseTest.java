@@ -31,7 +31,7 @@ class SaveGameUseCaseTest {
     @DisplayName("Save game successfully")
     void saveGameSuccessfully() {
 
-        var game = new Game("testId", "title", "1995", "edition", 1, true, List.of());
+        var game = new Game("testId", "title", "testPrice","edition","testCover", 1, true);
 
         Mockito.when(gateway.saveGame(game)).thenReturn(Mono.just(game));
 

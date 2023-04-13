@@ -32,7 +32,7 @@ class UpdateGameUseCaseTest {
     void updateGameSuccess() {
 
         var gameId = "testId";
-        var updatedGame = new Game(gameId, "newTitle", "1996", "newEdition", 2, false, List.of());
+        var updatedGame = new Game(gameId, "newTitle", "newPrice", "newEdition", "newCover" ,2, false);
 
         Mockito.when(gateway.updateGame(gameId, updatedGame)).thenReturn(Mono.just(updatedGame));
 
@@ -50,7 +50,7 @@ class UpdateGameUseCaseTest {
     void updateGameNonExistentId() {
 
         var gameId = "testId";
-        var updatedGame = new Game(gameId, "newTitle", "1996", "newEdition", 2, false, List.of());
+        var updatedGame = new Game(gameId, "newTitle", "newPrice", "newEdition", "newCover" ,2, false);
 
         Mockito.when(gateway.updateGame(gameId, updatedGame)).thenReturn(Mono.error(new RuntimeException("Could not find game for id: " + gameId)));
 

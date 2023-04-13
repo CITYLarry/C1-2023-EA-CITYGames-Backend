@@ -32,7 +32,7 @@ class UpdateCustomerUseCaseTest {
     void update() {
 
         String customerId = "testId";
-        var updatedCustomer = new Customer("testId", "newtest@mail.com", "newtestPassword", List.of());
+        var updatedCustomer = new Customer("testId", "newtest@mail.com", List.of());
 
         Mockito.when(customerGateway.updateCustomer(customerId, updatedCustomer))
                 .thenReturn(Mono.just(updatedCustomer));
@@ -52,7 +52,7 @@ class UpdateCustomerUseCaseTest {
     void updateNonExistingId() {
 
         String customerId = "nonExistingId";
-        var customerToUpdate = new Customer("nonExistingId", "newtest@mail.com", "newtestPassword", List.of());
+        var customerToUpdate = new Customer("nonExistingId", "newtest@mail.com", List.of());
 
         Mockito.when(customerGateway.updateCustomer(customerId, customerToUpdate))
                 .thenReturn(Mono.error(new RuntimeException("Could not find customer for id: " + customerId)));

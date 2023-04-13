@@ -32,8 +32,8 @@ class GetAllCustomersUseCaseTest {
     @DisplayName("Get all customers successfully")
     void get() {
 
-        var c1 = new Customer("testId", "test@mail.com", "testPassword", List.of());
-        var c2 = new Customer("testId2", "test2@mail.com", "testPassword2", List.of());
+        var c1 = new Customer("testId", "test@mail.com", List.of());
+        var c2 = new Customer("testId2", "test2@mail.com", List.of());
 
         Mockito.when(gateway.getAllCustomers()).thenReturn(Flux.just(c1, c2));
 
