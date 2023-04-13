@@ -17,7 +17,7 @@ import java.util.List;
 public class OrderDetail {
 
     private String orderId;
-    private String customerId;
+    private String totalAmount;
 
     private Instant createdAt;
 

@@ -17,7 +17,6 @@ public class Customer {
 
     private String customerId;
     private String email;
-    private String password;
 
     private List<OrderDetail> orderList;
 }

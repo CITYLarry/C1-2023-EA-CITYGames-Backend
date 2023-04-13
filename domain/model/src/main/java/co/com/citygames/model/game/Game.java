@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 
 @Getter
 @Setter
@@ -16,12 +15,11 @@ public class Game {
 
     private String gameId;
     private String title;
-    private String yearRelease;
+    private String price;
     private String edition;
+    private String cover;
 
     private Integer quantity;
 
     private Boolean available;
-
-    private List<String> categories;
 }

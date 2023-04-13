@@ -17,9 +17,9 @@ public class OrderDetailData {
 
     @Id
     private String orderId;
-    private String customerId;
+    private String totalAmount;
 
-    private Instant createdAt;
+    private Instant createdAt = Instant.now();
 
     private List<Game> gameList = new ArrayList<>();
 }
