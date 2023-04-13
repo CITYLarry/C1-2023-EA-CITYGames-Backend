@@ -61,16 +61,25 @@ public class MongoGameRepositoryAdapter implements GameGateway {
 
     @Override
     public Flux<Game> getAllSonyGames() {
-        return null;
+        return gameDataRepository
+                .findAllByEdition("Play Station 5")
+                .switchIfEmpty(Flux.error(new RuntimeException("Could not find games for edition: Play Station 5")))
+                .map(gameData -> objectMapper.map(gameData, Game.class));
     }
 
     @Override
     public Flux<Game> getAllMicrosoftGames() {
-        return null;
+        return gameDataRepository
+                .findAllByEdition("Xbox Series")
+                .switchIfEmpty(Flux.error(new RuntimeException("Could not find games for edition: Xbox Series")))
+                .map(gameData -> objectMapper.map(gameData, Game.class));
     }
 
     @Override
     public Flux<Game> getAllPcGames() {
-        return null;
+        return gameDataRepository
+                .findAllByEdition("Pc")
+                .switchIfEmpty(Flux.error(new RuntimeException("Could not find games for edition: Pc")))
+                .map(gameData -> objectMapper.map(gameData, Game.class));
     }
 }

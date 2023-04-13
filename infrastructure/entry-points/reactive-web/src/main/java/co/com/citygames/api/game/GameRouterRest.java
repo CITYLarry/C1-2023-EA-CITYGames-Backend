@@ -3,6 +3,9 @@ package co.com.citygames.api.game;
 import co.com.citygames.model.game.Game;
 import co.com.citygames.usecase.game.deletegame.DeleteGameUseCase;
 import co.com.citygames.usecase.game.getallgames.GetAllGamesUseCase;
+import co.com.citygames.usecase.game.getallmicrosoftgames.GetAllMicrosoftGamesUseCase;
+import co.com.citygames.usecase.game.getallpcgames.GetAllPcGamesUseCase;
+import co.com.citygames.usecase.game.getallsonygames.GetAllSonyGamesUseCase;
 import co.com.citygames.usecase.game.getgamebyid.GetGameByIdUseCase;
 import co.com.citygames.usecase.game.savegame.SaveGameUseCase;
 import co.com.citygames.usecase.game.updategame.UpdateGameUseCase;
@@ -63,6 +66,108 @@ public class GameRouterRest {
                 request -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromPublisher(getAllGamesUseCase.get(), Game.class))
+                        .onErrorResume(throwable -> ServerResponse.noContent().build())
+        );
+    }
+
+    @Bean
+    @RouterOperation(
+            path = "/api/v1/games/sony",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            beanClass = GetAllSonyGamesUseCase.class,
+            beanMethod = "get",
+            method = RequestMethod.GET,
+            operation = @Operation(
+                    operationId = "getAllSonyGames",
+                    tags = "Game use cases",
+                    responses = {
+                            @ApiResponse(
+                                    responseCode = "200",
+                                    description = "Games found successfully",
+                                    content = @Content(schema = @Schema(implementation = Game.class))
+                            ),
+                            @ApiResponse(
+                                    responseCode = "400",
+                                    description = "Could not find game for Play Station 5",
+                                    content = @Content()
+                            )
+                    }
+            )
+    )
+    public RouterFunction<ServerResponse> getAllSonyGames(GetAllSonyGamesUseCase getAllSonyGamesUseCase) {
+        return route(
+                GET("/api/v1/games/sony"),
+                request -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromPublisher(getAllSonyGamesUseCase.get(), Game.class))
+                        .onErrorResume(throwable -> ServerResponse.noContent().build())
+        );
+    }
+
+    @Bean
+    @RouterOperation(
+            path = "/api/v1/games/microsoft",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            beanClass = GetAllMicrosoftGamesUseCase.class,
+            beanMethod = "get",
+            method = RequestMethod.GET,
+            operation = @Operation(
+                    operationId = "getAllMicrosoftGames",
+                    tags = "Game use cases",
+                    responses = {
+                            @ApiResponse(
+                                    responseCode = "200",
+                                    description = "Games found successfully",
+                                    content = @Content(schema = @Schema(implementation = Game.class))
+                            ),
+                            @ApiResponse(
+                                    responseCode = "400",
+                                    description = "Could not find game for Xbox Series",
+                                    content = @Content()
+                            )
+                    }
+            )
+    )
+    public RouterFunction<ServerResponse> getAllMicrosoftGames(GetAllMicrosoftGamesUseCase getAllMicrosoftGamesUseCase) {
+        return route(
+                GET("/api/v1/games/microsoft"),
+                request -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromPublisher(getAllMicrosoftGamesUseCase.get(), Game.class))
+                        .onErrorResume(throwable -> ServerResponse.noContent().build())
+        );
+    }
+
+    @Bean
+    @RouterOperation(
+            path = "/api/v1/games/pc",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            beanClass = GetAllPcGamesUseCase.class,
+            beanMethod = "get",
+            method = RequestMethod.GET,
+            operation = @Operation(
+                    operationId = "getAllPcGames",
+                    tags = "Game use cases",
+                    responses = {
+                            @ApiResponse(
+                                    responseCode = "200",
+                                    description = "Games found successfully",
+                                    content = @Content(schema = @Schema(implementation = Game.class))
+                            ),
+                            @ApiResponse(
+                                    responseCode = "400",
+                                    description = "Could not find game for Pc",
+                                    content = @Content()
+                            )
+                    }
+            )
+    )
+    public RouterFunction<ServerResponse> getAllPcGames(GetAllPcGamesUseCase getAllPcGamesUseCase) {
+        return route(
+                GET("/api/v1/games/pc"),
+                request -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromPublisher(getAllPcGamesUseCase.get(), Game.class))
                         .onErrorResume(throwable -> ServerResponse.noContent().build())
         );
     }
