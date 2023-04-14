@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="co.com.citygames.usecase.orderdetail.saveorder.SaveOrderUseCaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-04-13T23:19:16" hostname="CITYLARRY" time="0.005">
+  <properties/>
+  <testcase name="Save order successfully" classname="co.com.citygames.usecase.orderdetail.saveorder.SaveOrderUseCaseTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

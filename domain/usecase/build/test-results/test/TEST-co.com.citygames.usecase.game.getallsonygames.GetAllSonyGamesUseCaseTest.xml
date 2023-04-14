@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="co.com.citygames.usecase.game.getallsonygames.GetAllSonyGamesUseCaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-04-13T23:19:16" hostname="CITYLARRY" time="0.003">
+  <properties/>
+  <testcase name="Get all sony games successfully" classname="co.com.citygames.usecase.game.getallsonygames.GetAllSonyGamesUseCaseTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="co.com.citygames.usecase.customer.deletecustomer.DeleteCustomerUseCaseTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-04-13T23:19:14" hostname="CITYLARRY" time="1.819">
+  <properties/>
+  <testcase name="Delete customer successfully" classname="co.com.citygames.usecase.customer.deletecustomer.DeleteCustomerUseCaseTest" time="1.812"/>
+  <testcase name="Delete non-existent customer" classname="co.com.citygames.usecase.customer.deletecustomer.DeleteCustomerUseCaseTest" time="0.006"/>
+  <system-out><![CDATA[18:19:16.131 [Test worker] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

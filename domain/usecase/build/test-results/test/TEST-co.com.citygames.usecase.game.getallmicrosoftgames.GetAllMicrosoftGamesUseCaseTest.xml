@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="co.com.citygames.usecase.game.getallmicrosoftgames.GetAllMicrosoftGamesUseCaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-04-13T23:19:16" hostname="CITYLARRY" time="0.002">
+  <properties/>
+  <testcase name="Get all microsoft games successfully" classname="co.com.citygames.usecase.game.getallmicrosoftgames.GetAllMicrosoftGamesUseCaseTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
